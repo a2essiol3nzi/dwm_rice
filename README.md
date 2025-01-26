@@ -1,0 +1,2 @@
+# Suckless-ricing
+dwm customization
