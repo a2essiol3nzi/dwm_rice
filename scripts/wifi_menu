@@ -1,0 +1,61 @@
+#!/bin/sh
+
+# Controlla lo stato del Wi-Fi
+wifi_status=$(nmcli radio wifi)
+
+# Trova la rete Wi-Fi attualmente connessa (se esiste)
+current_wifi=$(nmcli -t -f NAME,DEVICE connection show --active | grep wlo1 | cut -d: -f1)
+
+# Aggiungi l'opzione per attivare/disattivare il Wi-Fi
+if [ "$wifi_status" == "enabled" ]; then
+    toggle_option="Disattiva Wi-Fi - attualmente: $current_wifi"
+else
+    toggle_option="Attiva Wi-Fi"
+fi
+
+# Elenca le reti Wi-Fi disponibili (rimuove duplicati e filtra reti vuote)
+networks=$(nmcli -t -f SSID,SECURITY dev wifi | awk -F: '{print $1}' | sort -u | sed '/^$/d')
+
+# Prepara le opzioni per dmenu
+options="$toggle_option\n$networks"
+
+# Mostra le opzioni nel menu dmenu
+chosen=$(echo -e "$options" | dmenu -i -p "Seleziona un'opzione o una rete Wi-Fi:")
+
+# Se non è stata selezionata alcuna opzione
+if [ -z "$chosen" ]; then
+    exit 0
+fi
+
+# Gestisci l'opzione per attivare o disattivare il Wi-Fi
+if [ "$chosen" == "Disattiva Wi-Fi - attualmente: $current_wifi" ]; then
+    nmcli radio wifi off
+    echo "Wi-Fi disattivato" | dmenu -i -p "Stato:"
+    exit 0
+elif [ "$chosen" == "Attiva Wi-Fi" ]; then
+    nmcli radio wifi on
+    echo "Wi-Fi attivato" | dmenu -i -p "Stato:"
+    exit 0
+fi
+
+# Controlla il tipo di sicurezza della rete scelta
+security=$(nmcli -t -f SSID,SECURITY dev wifi | grep "^$chosen" | awk -F: '{print $2}')
+
+# Rete WPA2-Enterprise/WPA3-Enterprise: richiede nome utente e password
+if [[ "$security" == *"WPA2-EAP"* || "$security" == *"WPA3-EAP"* ]]; then
+    username=$(dmenu -p "Inserisci il nome utente per $chosen:")
+    password=$(dmenu -p "Inserisci la password per $chosen:")
+    if nmcli dev wifi connect "$chosen" 802-1x.identity "$username" 802-1x.password "$password"; then
+        echo "Connesso a $chosen (WPA-Enterprise)" | dmenu -i -p "Stato:"
+    else
+        echo "Connessione fallita a $chosen" | dmenu -i -p "Stato:"
+    fi
+else
+    # Rete standard WPA2/WPA3: richiede solo la password
+    password=$(dmenu -p "Inserisci la password per $chosen:")
+    if nmcli dev wifi connect "$chosen" password "$password"; then
+        echo "Connesso a $chosen" | dmenu -i -p "Stato:"
+    else
+        echo "Connessione fallita a $chosen" | dmenu -i -p "Stato:"
+    fi
+fi

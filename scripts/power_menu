@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Opzioni del menu
+options="Spegni\nRiavvia\nSospendi\nAnnulla"
+
+# Mostra le opzioni nel menu dmenu
+chosen=$(echo -e "$options" | dmenu -i -p "Seleziona un'azione:")
+
+# Esegui l'azione scelta
+case "$chosen" in
+    "Sospendi")
+        systemctl suspend
+        ;;
+    "Spegni")
+        systemctl poweroff
+        ;;
+    "Riavvia")
+        systemctl reboot
+        ;;
+    "Annulla")
+        exit 0
+        ;;
+    *)
+        exit 1
+        ;;
+esac
