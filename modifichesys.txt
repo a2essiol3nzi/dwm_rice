@@ -1,0 +1,25 @@
+# Per usare gnome riabilitare wayland in: /etc/gdm/custom.conf
+Wayland=false or #Wayland=true
+
+
+# file .desktop in: /usr/share/xsession/
+[Desktop Entry]
+Name=DWM
+Comment=Dynamic Window Manager
+Exec=/usr/local/bin/start_DWM
+Icon=dwm
+Type=Xsession
+DesktopNames=dwm
+
+
+# l'avvio è personalizzato dal file start_DWM in: /usr/local/bin/
+# sfondo
+~/.fehbg &
+
+# statusbar personalizzata
+~/Suckless/SuckScripts/statusbar.sh &
+
+exec dwm
+
+
+# in alternativa si puo usare il file .xinitrc con lo stesso contenuto
