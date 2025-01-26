@@ -1,8 +1,10 @@
 # Per usare gnome riabilitare wayland in: /etc/gdm/custom.conf
+
 Wayland=false or #Wayland=true
 
 
-# file .desktop in: /usr/share/xsession/
+# file .desktop in: /usr/share/xsession/dwm.desktop
+
 [Desktop Entry]
 Name=DWM
 Comment=Dynamic Window Manager
@@ -12,7 +14,8 @@ Type=Xsession
 DesktopNames=dwm
 
 
-# l'avvio è personalizzato dal file start_DWM in: /usr/local/bin/
+# l'avvio è personalizzato dal file start_DWM in: /usr/local/bin/start_DWM
+
 # sfondo
 ~/.fehbg &
 
