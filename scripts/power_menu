@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Opzioni del menu
 options="Spegni\nRiavvia\nSospendi\nAnnulla"

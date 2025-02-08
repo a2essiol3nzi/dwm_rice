@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Controlla lo stato del Wi-Fi
 wifi_status=$(nmcli radio wifi)
