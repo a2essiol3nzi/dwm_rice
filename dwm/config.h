@@ -25,7 +25,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "" , "", "󰖟" }; // there are icons, with some IDE they are empty use st tu view
+static const char *tags[] = { "", "", "", "" , "", "󰖟" }; // there are icons, with some IDE they are empty use st to view them 
 
 static const Rule rules[] = {
 	/* xprop(1):

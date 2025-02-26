@@ -95,29 +95,29 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence)
 
-https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic O
+https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic P
 
 */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#1a1d23",
-	"#a24ad9",
-	"#0d9c89",
-	"#1ed2ba",
-	"#74a8fb",
-	"#9488f2",
-	"#1bbba6",
-	"#e7eaee",
+	"#616161",
+	"#c039d5",
+	"#1398aa",
+	"#3ccadd",
+	"#929ff7",
+	"#a57af0",
+	"#23b4c7",
+	"#e8e8ee",
 
-	/* 8 bright colors */
-	"#646975", 
-	"#c27eed",
-	"#2fdac3",
-	"#93ece0",
-	"#c7dcff",
-	"#aba1f7",
-	"#c2d9ff",
-	"#f6f7f9",
+	// 8 bright colors
+	"#5E6068",
+	"#db75eb",
+	"#5ad2e2",
+	"#a4e6ef",
+	"#d0d5fb",
+	"#b792f6",
+	"#c6cdfb",
+	"#f6f6f9",
 
 	[255] = 0,
 
@@ -188,7 +188,7 @@ static MouseShortcut mshortcuts[] = {
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
+#define MODKEY Mod1Mask /* Alt */
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
@@ -197,16 +197,16 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ TERMMOD,              XK_Prior,       zoom,           {.f = +1} },
-	{ TERMMOD,              XK_Next,        zoom,           {.f = -1} },
-	{ TERMMOD,              XK_Home,        zoomreset,      {.f =  0} },
+	{ Mod4Mask,              XK_plus,       zoom,           {.f = +1} }, //SUPER,+
+	{ Mod4Mask,              XK_minus,      zoom,           {.f = -1} }, //SUPER,-
+	{ Mod4Mask,              XK_0,        	zoomreset,      {.f =  0} }, //SUPER,0
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
 	{ TERMMOD,              XK_V,           clippaste,      {.i =  0} },
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ Mod4Mask,            	XK_Up,     		kscrollup,      {.i = -1} },  
-    { Mod4Mask,            	XK_Down,   		kscrolldown,    {.i = -1} },  
+	{ Mod4Mask,            	XK_Up,     	kscrollup,      {.i = -1} }, // SUPER,Up
+    	{ Mod4Mask,            	XK_Down,   	kscrolldown,    {.i = -1} }, // SUPER,Down
 };
 
 /*

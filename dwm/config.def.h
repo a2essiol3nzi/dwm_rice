@@ -8,8 +8,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int splitstatus        = 1;        /* 1 for split status items */
 static const char *splitdelim       = ";";       /* Character used for separating status */
 
-static const char *fonts[]          = { "HackNerdFont-Regular:size=11" };
-static const char dmenufont[]       = "HackNerdFont-Regular:size=11";
+static const char *fonts[]          = { "HackNerdFont-Regular:size=12" };
+static const char dmenufont[]       = "HackNerdFont-Regular:size=12";
 
 static const char col_gray1[]       = "#020914";
 static const char col_gray2[]       = "#a8856c";
@@ -25,7 +25,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "󰋜", "", "" , "󰖟", "", "" };
+static const char *tags[] = { "", "", "", "" , "", "󰖟" }; // there are icons, with some IDE they are empty use st to view them 
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -51,7 +51,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
+#define MODKEY Mod1Mask /* Alt */
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
