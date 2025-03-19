@@ -1,0 +1,17 @@
+General app:
+
+file manager -> thunar
+bluetooth -> 
+discrod -> 
+VS code -> code
+calcolatrice -> 
+temi -> lxappearance
+anytype -> 
+
+-------------------------------------------------
+MINE_scripts :
+
+power -> MINE_power
+wifi -> MINE_wifi oppure (terminale)-> nmcli
+brightness -> MINE_bright
+volume -> MINE_volume

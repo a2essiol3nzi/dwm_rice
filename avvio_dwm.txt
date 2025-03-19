@@ -1,0 +1,8 @@
+# l'avvio è personalizzato con startx -> ~/.xinitrc
+# sfondo
+~/.fehbg &
+
+# statusbar personalizzata
+~/Suckless/SuckScripts/statusbar.sh &
+
+exec dwm
