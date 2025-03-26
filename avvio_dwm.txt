@@ -1,8 +1,14 @@
 # l'avvio è personalizzato con startx -> ~/.xinitrc
+# avvia il servizio di password e credenziali
+systemctl --user start pass-secret-service &
+
 # sfondo
 ~/.fehbg &
 
 # statusbar personalizzata
-~/Suckless/SuckScripts/statusbar.sh &
+#~/Suckless/SuckScripts/statusbar.sh &
+~/.config/Suckless/slstatus/slstatus &
 
+
+# avvia dwm
 exec dwm

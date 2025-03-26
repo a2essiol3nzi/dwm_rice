@@ -95,7 +95,7 @@ while :; do
                 counter=0 # Resetta il contatore per evitare overflow
         fi
 
-        xsetroot -name "$(dayandate)"";""[󰖩 :$wifi_data |  :$cpu_data -  :$ram_data| $battery_data]""[$(timedate)]"
+        xsetroot -name "$(dayandate)"";""[󰖩 :$wifi_data |  :$cpu_data -  :$ram_data | $battery_data]""[$(timedate)]"
 
         # incrementa il contatore
         counter=$((counter + 1))

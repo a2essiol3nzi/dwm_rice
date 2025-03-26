@@ -1,11 +1,8 @@
 # Suckless-ricing
-My dwm customization!
+My dwm rice!
 
-I personally made the statusbar (scripts folder) according to my preferences it could be modified in better probably. 
-
-The icons are visibile only if you use a font that support them. 
-
-There are also some scripts for shutdown, volume, etc.
+I added some scripts, and some tools/patches by suckless. Every patch and tools has its folder, so it's easy to understand. 
 
 ## Notes
-I use Endeavouros. 
+- I use Endeavouros. 
+- The icons are visibile only if you use a font that support them. 

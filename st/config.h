@@ -95,28 +95,28 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence)
 
-https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic P
+https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic Q
 
 */
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"#616161",
-	"#c039d5",
-	"#1398aa",
-	"#3ccadd",
-	"#929ff7",
-	"#a57af0",
-	"#23b4c7",
-	"#e8e8ee",
+	"#d4359a",
+	"#4287f5",
+	"#88b4fc",
+	"#a095f3",
+	"#ba6cea",
+	"#659efb",
+	"#e9e8ed",
 
 	// 8 bright colors
 	"#5E6068",
-	"#db75eb",
-	"#5ad2e2",
-	"#a4e6ef",
-	"#d0d5fb",
-	"#b792f6",
-	"#c6cdfb",
+	"#eb75c0",
+	"#9cc1fc",
+	"#c2d9ff",
+	"#d9d5fc",
+	"#c988f2",
+	"#d1cbfb",
 	"#f6f6f9",
 
 	[255] = 0,

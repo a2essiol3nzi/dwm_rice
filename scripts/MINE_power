@@ -9,7 +9,7 @@ chosen=$(echo -e "$options" | dmenu -i -p "Seleziona un'azione:")
 # Esegui l'azione scelta
 case "$chosen" in
     "Sospendi")
-        systemctl suspend
+        slock & systemctl suspend
         ;;
     "Spegni")
         systemctl poweroff
