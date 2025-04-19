@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=14:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "Liberation Mono:size=12:antialias=true:autohint=true";
+static int borderpx = 4;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -93,37 +93,37 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-/* Terminal colors (16 first used in escape sequence)
+/* Terminal colors (16 first used in escape sequence): 
 
-https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic Q
+https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic O
 
 */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#616161",
-	"#d4359a",
-	"#4287f5",
-	"#88b4fc",
-	"#a095f3",
-	"#ba6cea",
-	"#659efb",
-	"#e9e8ed",
+	"#1a1d23",
+	"#a24ad9",
+	"#0d9c89",
+	"#1ed2ba",
+	"#74a8fb",
+	"#9488f2",
+	"#1bbba6",
+	"#e7eaee",
 
 	// 8 bright colors
 	"#5E6068",
-	"#eb75c0",
-	"#9cc1fc",
+	"#c27eed",
+	"#2fdac3",
+	"#93ece0",
+	"#c7dcff",
+	"#aba1f7",
 	"#c2d9ff",
-	"#d9d5fc",
-	"#c988f2",
-	"#d1cbfb",
-	"#f6f6f9",
+	"#f6f7f9",
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
+	"#9999ff", /* cursor */
+	"#555555", /* cursor highlight */
 	"gray90", /* default foreground colour */
 	"#16161C", /* default background colour */
 };
@@ -174,12 +174,18 @@ static unsigned int defaultattr = 11;
  */
 static uint forcemousemod = ShiftMask;
 
+
+#define MODKEY Mod1Mask
+#define TERMMOD (ControlMask|ShiftMask)
+
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+	{ Mod4Mask,            	Button4, kscrollup,      {.i = 1} }, 	// rollback by mousering/trackpad Alt+..
+	{ Mod4Mask,            	Button5, kscrolldown,    {.i = 1} },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -188,8 +194,6 @@ static MouseShortcut mshortcuts[] = {
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask /* Alt */
-#define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -205,8 +209,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ Mod4Mask,            	XK_Up,     	kscrollup,      {.i = -1} }, // SUPER,Up
-    	{ Mod4Mask,            	XK_Down,   	kscrolldown,    {.i = -1} }, // SUPER,Down
+	{ MODKEY,            	XK_Up,     			kscrollup,      {.i = -1} }, // Alt,Up (rollback can be done with mouse too)
+  { MODKEY,            	XK_Down,   			kscrolldown,    {.i = -1} }, // Alt,Down
 };
 
 /*

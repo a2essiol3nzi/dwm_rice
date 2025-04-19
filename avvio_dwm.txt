@@ -1,13 +1,23 @@
-# l'avvio è personalizzato con startx -> ~/.xinitrc
+# file di avvio per startx
+
 # avvia il servizio di password e credenziali
-systemctl --user start pass-secret-service &
+#systemctl --user start pass-secret-service &
+
 
 # sfondo
 ~/.fehbg &
 
+
 # statusbar personalizzata
 #~/Suckless/SuckScripts/statusbar.sh &
-~/.config/Suckless/slstatus/slstatus &
+~/Suckless/slstatus/slstatus &
+
+
+# Controllo automatico dei display
+if xrandr | grep -q "HDMI-1 connected"; then
+    xrandr --output eDP-1 --off --output HDMI-1 --auto --primary
+fi
+# in caso di problemi il comando per attivarli entrambi : xrandr --output eDP-1 --auto --output HDMI-1 --auto --right-of eDP-1
 
 
 # avvia dwm

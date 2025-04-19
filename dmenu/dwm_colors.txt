@@ -1,0 +1,12 @@
+--- colori per la personalizzazione (alcune idee)
+
+fredda:
+"#000000"
+"#a8856c"
+"#F6DDCC"
+"#F6DDCC"
+"#fcfcfc"
+"#565879"
+
+
+calda(rossa):

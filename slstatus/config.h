@@ -21,7 +21,8 @@ static const char unknown_str[] = "n/a";
  * cat                 read arbitrary file             path
  * cpu_freq            cpu frequency in MHz            NULL
  * cpu_perc            cpu usage in percent            NULL
- * datetime            date and time                   format string (%F %T)
+ * datetime            date and time                   format string (%F %T) 
+ * 																																	 (%d %m %Y) 
  * disk_free           free disk space in GB           mountpoint path (/)
  * disk_perc           disk usage in percent           mountpoint path (/)
  * disk_total          total disk space in GB          mountpoint path (/)
@@ -62,16 +63,16 @@ static const char unknown_str[] = "n/a";
  *                                                     NULL on OpenBSD/FreeBSD
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
- */
+*/
+
 static const struct arg args[] = {
 	/* function 		format         	argument */
-	{ datetime, 		"%s"";",       	"%F" },
-	////// DELIM
+	{ datetime, 		"%s"";",       	"%d.%m,%Y" },
+	
 	{ wifi_perc,		"[󰖩 :%s | ",		 "wlan0" },
 	{ cpu_perc, 		" :%s - ",			NULL },
 	{ ram_perc, 		" :%s | ",			NULL },
 	{ battery_state,"%s:",					"BAT0" },
-	{ battery_perc,	"%s]",					"BAT0"},
-	///// OARIO
-	{ datetime, 		"[%s]",					"%T"}, 
+	{ battery_perc,	"%s]",					"BAT0" },
+	{ datetime, 		"[%s]",					"%T" }, 
 };

@@ -1,3 +1,5 @@
+/// conf prima della patch dello scroll con mouse
+
 /* See LICENSE file for copyright and license details. */
 
 /*
@@ -5,8 +7,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:size=12:antialias=true:autohint=true";
-static int borderpx = 4;
+static char *font = "Liberation Mono:pixelsize=14:antialias=true:autohint=true";
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -91,16 +93,16 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
 
-/* Terminal colors (16 first used in escape sequence): 
+/* Terminal colors (16 first used in escape sequence)
 
 https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic O
 
 */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#1a1d23",
+	"#616161",
 	"#a24ad9",
 	"#0d9c89",
 	"#1ed2ba",
@@ -174,18 +176,12 @@ static unsigned int defaultattr = 11;
  */
 static uint forcemousemod = ShiftMask;
 
-
-#define MODKEY Mod1Mask
-#define TERMMOD (ControlMask|ShiftMask)
-
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ Mod4Mask,            	Button4, kscrollup,      {.i = 1} }, 	// rollback by mousering/trackpad Alt+..
-	{ Mod4Mask,            	Button5, kscrolldown,    {.i = 1} },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
@@ -194,6 +190,8 @@ static MouseShortcut mshortcuts[] = {
 };
 
 /* Internal keyboard shortcuts. */
+#define MODKEY Mod1Mask /* Alt */
+#define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -209,8 +207,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ MODKEY,            	XK_Up,     			kscrollup,      {.i = -1} }, // Alt,Up (rollback can be done with mouse too)
-  { MODKEY,            	XK_Down,   			kscrolldown,    {.i = -1} }, // Alt,Down
+	{ Mod4Mask,            	XK_Up,     			kscrollup,      {.i = -1} }, // SUPER,Up
+  { Mod4Mask,            	XK_Down,   			kscrolldown,    {.i = -1} }, // SUPER,Down
 };
 
 /*

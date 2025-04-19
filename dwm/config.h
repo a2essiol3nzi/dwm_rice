@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -12,12 +12,12 @@ static const char *splitdelim       = ";";       /* Character used for separatin
 static const char *fonts[]          = { "HackNerdFont-Regular:size=12" };
 static const char dmenufont[]       = "HackNerdFont-Regular:size=12";
 
-static const char col_gray1[]       = "#020914";
+static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#a8856c";
 static const char col_gray3[]       = "#F6DDCC";
 static const char col_white1[]      = "#F6DDCC";
 static const char col_white2[]	    = "#fcfcfc";
-static const char col_cyan[]	    = "#565879";
+static const char col_cyan[]	    	= "#565879";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "2", "3", "4" , "5", "6" }; // there are icons, with some IDE they are empty use st to view them 
+static const char *tags[] = { "", "2", "3", "4" , "5", "6" }; // there are icons, with some IDE they are just spaces, use a "terminal editor" to view them 
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -52,7 +52,7 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask /* Alt */
+#define MODKEY Mod1Mask /* Alt, SUPER = Mod4Mask */
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -63,35 +63,53 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */		/*	.					.			 Sel bg				 */
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_white2, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	/////// MINES -> mine shortcuts use ALWAYS the SUPER key!
+	// { Mod4Mask,			XK_},
+	{ MODKEY,                       	XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             	XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       	XK_b,      togglebar,      {0} },
+	{ MODKEY,                       	XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       	XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       	XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       	XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       	XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       	XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       	XK_Return, zoom,           {0} },
+	{ MODKEY,                       	XK_Tab,    view,           {0} },
+	{ MODKEY|ShiftMask,             	XK_c,      killclient,     {0} },
+	{ MODKEY,                       	XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       	XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       	XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       	XK_space,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             	XK_space,  togglefloating, {0} },
+	{ Mod4Mask,                       XK_Down,   moveresize,     {.v = "0x 50y 0w 0h" } },	// modified cause the conflict on internet pages
+	{ Mod4Mask,                       XK_Up,     moveresize,     {.v = "0x -50y 0w 0h" } },
+	{ Mod4Mask,                       XK_Right,  moveresize,     {.v = "50x 0y 0w 0h" } },
+	{ Mod4Mask,                       XK_Left,   moveresize,     {.v = "-50x 0y 0w 0h" } },
+	{ Mod4Mask|ShiftMask,             XK_Down,   moveresize,     {.v = "0x 0y 0w 50h" } },
+	{ Mod4Mask|ShiftMask,             XK_Up,     moveresize,     {.v = "0x 0y 0w -50h" } },
+	{ Mod4Mask|ShiftMask,             XK_Right,  moveresize,     {.v = "0x 0y 50w 0h" } },
+	{ Mod4Mask|ShiftMask,             XK_Left,   moveresize,     {.v = "0x 0y -50w 0h" } },
+	{ Mod4Mask|ControlMask,           XK_Up,     moveresizeedge, {.v = "t"} },
+	{ Mod4Mask|ControlMask,           XK_Down,   moveresizeedge, {.v = "b"} },
+	{ Mod4Mask|ControlMask,           XK_Left,   moveresizeedge, {.v = "l"} },
+	{ Mod4Mask|ControlMask,           XK_Right,  moveresizeedge, {.v = "r"} },
+	{ Mod4Mask|ControlMask|ShiftMask, XK_Up,     moveresizeedge, {.v = "T"} },
+	{ Mod4Mask|ControlMask|ShiftMask, XK_Down,   moveresizeedge, {.v = "B"} },
+	{ Mod4Mask|ControlMask|ShiftMask, XK_Left,   moveresizeedge, {.v = "L"} },
+	{ Mod4Mask|ControlMask|ShiftMask, XK_Right,  moveresizeedge, {.v = "R"} },
+	{ MODKEY,                       	XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             	XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       	XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       	XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             	XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             	XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
