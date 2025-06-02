@@ -1,0 +1,20 @@
+General app:
+
+file manager -> thunar
+bluetooth -> bluetoothctl
+wifi -> nmtui oppure nmcli
+discord -> discord
+IDE -> code o (doom)emacs
+calc -> speedcrunch
+themes -> lxappearance
+notes -> anytype 
+timeshift -> timeshift launcher (file comandi)
+screen block -> slock
+gestore mail -> thunderbird
+
+-------------------------------------------------
+MINE_ scripts :
+
+power -> MINE_power
+brightness -> MINE_bright
+volume -> MINE_volume

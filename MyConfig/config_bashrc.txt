@@ -1,0 +1,72 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+
+# alias generali
+alias ls='ls --color=auto'
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -la'
+
+alias grep='grep --color=auto'
+
+
+# pywal - pyenv
+alias pywenv-activate='source ~/.pywal-env/bin/activate'
+
+
+# ssh: gestione passphfrase
+ssh-zenkey() {
+    # Controlla se ssh-agent è attivo
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+        echo "Avvio ssh-agent..."
+        eval "$(ssh-agent -s)" > /dev/null
+    else
+        echo "ssh-agent è già attivo (PID: $(pgrep ssh-agent))"
+    fi
+    # Aggiunge la chiave SSH (se esiste e non è già caricata)
+    if [ -f ~/.ssh/id_ed25519 ]; then
+        if ! ssh-add -l | grep -q "ed25519"; then
+            echo "Aggiungo la chiave SSH all'agent..."
+            ssh-add ~/.ssh/id_ed25519
+        else
+            echo "La chiave è già presente in ssh-agent"
+        fi
+    fi
+}
+
+
+# screenshot
+scrot() {
+    command scrot -s -e 'mv $f ~/Immagini/SCReenshOT/' "$@"
+}
+
+
+# bluetooth
+alias bltth-stat='systemctl status bluetooth'
+alias bltth-on='sudo systemctl enable --now bluetooth'
+alias bltth-off='sudo systemctl disable --now bluetooth'
+alias bltth-restart='systemctl --user restart pipewire'
+
+
+# mostra repo
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+
+# autoavvio server X
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  exec startx
+fi
+
+
+#COLORI:		for i in {0..255}; do echo -e "\e[38;5;${i}mColore ${i}\e[0m"; done | column -x
+
+#PS1='[\[\e[38;5;39m\]\u@\h \[\e[38;5;86m\]\w\[\e[38;5;36m\]$(parse_git_branch)\[\e[0m\]]\$ '		# full cold
+#PS1='\[\e[38;5;36m\]$(parse_git_branch)\e[38;5;39m\] > \e[38;5;86m\]\w\[\e[0m\] \$ '	            # min cold
+PS1='\[\e[38;5;124m\][\[\e[38;5;179m\]\u\[\e[38;5;142m\]@\[\e[38;5;109m\]\h \w$(parse_git_branch)\[\e[38;5;124m\]]\[\e[0m\]\$ '    # full gruv
