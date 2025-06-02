@@ -4,15 +4,15 @@ static const char *group = "axel";
 
 static const char *colorname[NUMCOLS] = {
 	[INIT] =   "#000000",     /* after initialization */
-	[INPUT] =  "#190033",   /* during input */
-	[FAILED] = "#000000",   /* wrong password */
+	[INPUT] =  "#282A2E",   	/* during input */
+	[FAILED] = "#000000",   	/* wrong password */
 };
 
 /* treat a cleared input like a wrong password (color) */
 static const int failonclear = 1;
 
 /* default message */
-static const char * message = "Suckless: the software that suck less.";
+static const char * message = "AXEL OWN THIS MACHINE!";
 
 /* text color */
 static const char * text_color = "#ffffff";
