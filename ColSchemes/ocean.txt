@@ -1,0 +1,132 @@
+//dwm.h
+
+static const char norm_fg[] = "#c3c4c5";
+static const char norm_bg[] = "#101518";
+static const char norm_border[] = "#5b676f";
+
+static const char sel_fg[] = "#c3c4c5";
+static const char sel_bg[] = "#4F7B84";
+static const char sel_border[] = "#c3c4c5";
+
+static const char *colors[][3]      = {
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+};
+
+
+// st.h
+
+static const char *colorname[] = {
+	/* 8 normal colors */
+  [0] = "#101518", /* black   */
+  [1] = "#4F7B84", /* red     */
+  [2] = "#647DA2", /* green   */
+  [3] = "#59838A", /* yellow  */
+  [4] = "#6F8C91", /* blue    */
+  [5] = "#759AA6", /* magenta */
+  [6] = "#899A9D", /* cyan    */
+  [7] = "#c3c4c5", /* white   */
+
+  /* 8 bright colors */
+  [8]  = "#5b676f",  /* black   */
+  [9]  = "#4F7B84",  /* red     */
+  [10] = "#647DA2", /* green   */
+  [11] = "#59838A", /* yellow  */
+  [12] = "#6F8C91", /* blue    */
+  [13] = "#759AA6", /* magenta */
+  [14] = "#899A9D", /* cyan    */
+  [15] = "#c3c4c5", /* white   */
+
+  /* special colors */
+  [256] = "#101518", /* background */
+  [257] = "#c3c4cf", /* foreground */
+  [258] = "#c3c4cf",     /* cursor */
+};
+
+/* Default colors (colorname index)
+ * foreground, background, cursor */
+ unsigned int defaultbg = 0;
+ unsigned int defaultfg = 257;
+ unsigned int defaultcs = 258;
+ unsigned int defaultrcs= 258;
+
+
+// dmenu.h
+
+static const char *colors[SchemeLast][2] = {
+    /*     fg         bg       */
+    [SchemeNorm] = { "#c3c4c5", "#101518" },
+    [SchemeSel] = { "#c3c4c5", "#4F7B84" },
+    [SchemeOut] = { "#c3c4c5", "#899A9D" },
+};
+
+
+
+--------------------------------------------------- COLORZ
+
+//dwm.h
+
+static const char norm_fg[] = "#c3c4c4";
+static const char norm_bg[] = "#101313";
+static const char norm_border[] = "#596e6e";
+
+static const char sel_fg[] = "#101313";
+static const char sel_bg[] = "#88a2aa";
+static const char sel_border[] = "#c3c4c4";
+
+static const char *colors[][3]      = {
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+};
+
+
+// st.h
+
+static const char *colorname[] = {
+	/* 8 normal colors */
+  [0] = "#101313", /* black   */
+  [1] = "#88a2aa", /* red     */
+  [2] = "#749ddc", /* green   */
+  [3] = "#5393aa", /* yellow  */
+  [4] = "#6497aa", /* blue    */
+  [5] = "#9da8ba", /* magenta */
+  [6] = "#b6babd", /* cyan    */
+  [7] = "#c3c4c4", /* white   */
+
+  /* 8 bright colors */
+  [8]  = "#596e6e",  /* black   */
+  [9]  = "#88a2aa",  /* red     */
+  [10] = "#749ddc", /* green   */
+  [11] = "#5393aa", /* yellow  */
+  [12] = "#6497aa", /* blue    */
+  [13] = "#9da8ba", /* magenta */
+  [14] = "#b6babd", /* cyan    */
+  [15] = "#c3c4c4", /* white   */
+
+  /* special colors */
+  [256] = "#101313", /* background */
+  [257] = "#c3c4c4", /* foreground */
+  [258] = "#c3c4c4",     /* cursor */
+};
+
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
+unsigned int defaultbg = 0;
+unsigned int defaultfg = 257;
+unsigned int defaultcs = 258;
+static unsigned int defaultrcs= 258;
+
+
+//dmenu.h
+
+static const char *colors[SchemeLast][2] = {
+    /*     fg         bg       */
+    [SchemeNorm] = { "#c3c4c4", "#101313" },
+    [SchemeSel] = { "#101313", "#88a2aa" },
+    [SchemeOut] = { "#c3c4c4", "#b6babd" },
+};

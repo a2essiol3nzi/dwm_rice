@@ -1,0 +1,67 @@
+// dwm.h
+static const char col_gray1[]       = "#000000";
+static const char col_gray2[]       = "#a8856c";
+static const char col_gray3[]       = "#F6DDCC";
+static const char col_white1[]      = "#F6DDCC";
+static const char col_white2[]	    = "#fcfcfc";
+static const char col_cyan[]	    	= "#565879";
+
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] = { col_white2, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_white2, col_cyan, col_white1 },
+};
+
+...
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_white2, NULL };
+
+
+// dmenu.h
+static const char *colors[SchemeLast][2] = {
+	/*     		  		fg         bg       */
+	[SchemeNorm] = { "#F6DDCC", "#000000" },
+	[SchemeSel] = { "#fcfcfc", "#565879" },
+	[SchemeOut] = { "#F6DDCC", "#DA6748" },
+};
+
+
+// st.h
+static const char *colorname[] = {
+	/* 8 normal colors */
+	"#1a1d23",
+	"#a24ad9",
+	"#0d9c89",
+	"#1ed2ba",
+	"#74a8fb",
+	"#9488f2",
+	"#1bbba6",
+	"#e7eaee",
+
+	// 8 bright colors
+	"#5E6068",
+	"#c27eed",
+	"#2fdac3",
+	"#93ece0",
+	"#c7dcff",
+	"#aba1f7",
+	"#c2d9ff",
+	"#f6f7f9",
+
+	[255] = 0,
+
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#9999ff", /* cursor */
+	"#555555", /* cursor highlight */
+	"gray90", /* default foreground colour */
+	"#16161C", /* default background colour */
+};
+
+
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
+unsigned int defaultfg = 258;
+unsigned int defaultbg = 259;
+unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
