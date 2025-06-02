@@ -11,4 +11,4 @@ When I tried to rice for the first time was a little hard, I hope to be helpfull
 
 - This could be not the best rice or the best organization, SO PLESE TELL ME IF YOU NOTICE SOME HORRIBLE, HIDEOUS, DISGUSTING THINGS IN THIS REPO!!!!!!!
 
-![Preview (I'll add some more)](./Wallpapers/scrot.png)
+![Preview (I'll add some more)](scrot.png)
