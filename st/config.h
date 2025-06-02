@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:size=12:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 4;
 
 /*
@@ -91,41 +91,38 @@ char *termname = "st-256color";
  *
  *	stty tabs
  */
-unsigned int tabspaces = 8;
+unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence): 
-
-https://gogh-co.github.io/Gogh/ : (attuale) -> Base4Tone Classic O
-
+	https://gogh-co.github.io/Gogh/
 */
+
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"#1a1d23",
-	"#a24ad9",
-	"#0d9c89",
-	"#1ed2ba",
-	"#74a8fb",
-	"#9488f2",
-	"#1bbba6",
-	"#e7eaee",
 
-	// 8 bright colors
-	"#5E6068",
-	"#c27eed",
-	"#2fdac3",
-	"#93ece0",
-	"#c7dcff",
-	"#aba1f7",
-	"#c2d9ff",
-	"#f6f7f9",
+  /* 8 normal colors */
+  [0] = "#2b303b", /* black   */
+  [1] = "#bf616a", /* red     */
+  [2] = "#a3be8c", /* green   */
+  [3] = "#ebcb8b", /* yellow  */
+  [4] = "#8fa1b3", /* blue    */
+  [5] = "#b48ead", /* magenta */
+  [6] = "#96b5b4", /* cyan    */
+  [7] = "#c0c5ce", /* white   */
 
-	[255] = 0,
+  /* 8 bright colors */
+  [8]  = "#65737e", /* black   */
+  [9]  = "#bf616a", /* red     */
+  [10] = "#a3be8c", /* green   */
+  [11] = "#ebcb8b", /* yellow  */
+  [12] = "#8fa1b3", /* blue    */
+  [13] = "#b48ead", /* magenta */
+  [14] = "#96b5b4", /* cyan    */
+  [15] = "#eff1f5", /* white   */
 
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#9999ff", /* cursor */
-	"#555555", /* cursor highlight */
-	"gray90", /* default foreground colour */
-	"#16161C", /* default background colour */
+  /* special colors */
+  [256] = "#282A2E", /* background */
+  [257] = "#c0c5ce", /* foreground */
+
 };
 
 
@@ -133,10 +130,10 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 258;
-unsigned int defaultbg = 259;
-unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultcs = 257;
+unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -184,10 +181,10 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
-	{ Mod4Mask,            	Button4, kscrollup,      {.i = 1} }, 	// rollback by mousering/trackpad Alt+..
-	{ Mod4Mask,            	Button5, kscrolldown,    {.i = 1} },
-	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
+	{ 0,            		Button4, kscrollup,      {.i = 2} }, 	// rollback by mousering/trackpad Alt+..
+	{ 0,            		Button5, kscrolldown,    {.i = 2} },
+	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },		// incolla 
+	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },	
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
 	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
@@ -209,8 +206,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ MODKEY,            	XK_Up,     			kscrollup,      {.i = -1} }, // Alt,Up (rollback can be done with mouse too)
-  { MODKEY,            	XK_Down,   			kscrolldown,    {.i = -1} }, // Alt,Down
+	{ MODKEY,           		XK_Up,     			kscrollup,      {.i = -1} }, // Alt,Up (rollback can be done with mouse too)
+  { MODKEY,            		XK_Down,   			kscrolldown,    {.i = -1} }, // Alt,Down
 };
 
 /*

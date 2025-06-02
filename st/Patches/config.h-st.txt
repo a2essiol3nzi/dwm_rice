@@ -1,4 +1,4 @@
-/// conf prima della patch dello scroll con mouse
+/// conf prima della patch dello scroll
 
 /* See LICENSE file for copyright and license details. */
 
