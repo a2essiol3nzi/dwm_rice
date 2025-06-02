@@ -4,7 +4,7 @@
 options="Sospendi\nSpegni\nRiavvia\nAnnulla"
 
 # Mostra le opzioni nel menu dmenu
-chosen=$(echo -e "$options" | dmenu -i -p "Seleziona un'azione:")
+chosen=$(echo -e "$options" | dmenu -i -p "Already tired?")
 
 # Esegui l'azione scelta
 case "$chosen" in
