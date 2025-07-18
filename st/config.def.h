@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=15:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
 static int borderpx = 4;
 
 /*
@@ -75,6 +75,10 @@ static int bellvolume = 0;
 
 /* default TERM value */
 char *termname = "st-256color";
+
+/* bg opacity 
+1.0 == disabled */
+float alpha = 1.0;
 
 /*
  * spaces per tab
@@ -148,8 +152,8 @@ static unsigned int cursorshape = 2;
  * Default columns and rows numbers
  */
 
-static unsigned int cols = 80;
-static unsigned int rows = 24;
+static unsigned int cols = 81;
+static unsigned int rows = 22;
 
 /*
  * Default colour and shape of the mouse cursor
@@ -206,8 +210,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ MODKEY,           		XK_Up,     			kscrollup,      {.i = -1} }, // Alt,Up (rollback can be done with mouse too)
-  { MODKEY,            		XK_Down,   			kscrolldown,    {.i = -1} }, // Alt,Down
+	{ MODKEY,           	XK_Up,     		kscrollup,      {.i = -1} }, // Alt,Up (rollback can be done with mouse too)
+	{ MODKEY,            	XK_Down,   		kscrolldown,    {.i = -1} }, // Alt,Down
 };
 
 /*

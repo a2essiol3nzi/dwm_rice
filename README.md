@@ -9,6 +9,6 @@ When I tried to rice for the first time was a little hard, I hope to be helpfull
 - The "Myconfig" folder is probably more usefull for me :))
 - I struggled for many months to find any good wallpapers, I wanted to share those but GH wont let me commit them cause their too big -_- ... BUT there are some color schemes!!
 
-- This could be not the best rice or the best organization, SO PLESE TELL ME IF YOU NOTICE SOME HORRIBLE, HIDEOUS, DISGUSTING THINGS IN THIS REPO!!!!!!!
+- This could be not the best rice or the best organization, SO PLEASE TELL ME IF YOU NOTICE SOME HORRIBLE, HIDEOUS, DISGUSTING THINGS IN THIS REPO!!!!!!!
 
 ![Preview (I'll add some more)](scrot.png)

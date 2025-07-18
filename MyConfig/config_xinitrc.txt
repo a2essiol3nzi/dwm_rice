@@ -14,8 +14,8 @@ export GDK_BACKEND=x11
 
 
 # statusbar personalizzata
-#~/Suckless/SuckScripts/statusbar.sh &
-~/Suckless/slstatus/slstatus &
+#~/.Suckless/SuckScripts/statusbar.sh &
+slstatus &
 
 
 # Controllo automatico dei display
@@ -28,6 +28,9 @@ fi
 # riavvio bltth (alias bash)
 #bltth-restart
 
+
+# avvio compositor
+#picom &
 
 # avvia dwm
 exec dwm

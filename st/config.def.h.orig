@@ -76,10 +76,6 @@ static int bellvolume = 0;
 /* default TERM value */
 char *termname = "st-256color";
 
-/* bg opacity */
-// 1.0 == disabled
-float alpha = 1.0;
-
 /*
  * spaces per tab
  *
@@ -95,7 +91,7 @@ float alpha = 1.0;
  *
  *	stty tabs
  */
-unsigned int tabspaces = 2;
+unsigned int tabspaces = 4;
 
 /* Terminal colors (16 first used in escape sequence): 
 	https://gogh-co.github.io/Gogh/
@@ -104,28 +100,28 @@ unsigned int tabspaces = 2;
 static const char *colorname[] = {
 
   /* 8 normal colors */
-  [0] = "#616161", /* black   */
-  [1] = "#a24ad9", /* red     */
-  [2] = "#0d9c89", /* green   */
-  [3] = "#1ed2ba", /* yellow  */
-  [4] = "#74a8fb", /* blue    */
-  [5] = "#9488f2", /* magenta */
-  [6] = "#1bbba6", /* cyan    */
-  [7] = "#e7eaee", /* white   */
+  [0] = "#2b303b", /* black   */
+  [1] = "#bf616a", /* red     */
+  [2] = "#a3be8c", /* green   */
+  [3] = "#ebcb8b", /* yellow  */
+  [4] = "#8fa1b3", /* blue    */
+  [5] = "#b48ead", /* magenta */
+  [6] = "#96b5b4", /* cyan    */
+  [7] = "#c0c5ce", /* white   */
 
   /* 8 bright colors */
-  [8]  = "#5E6068", /* black   */
-  [9]  = "#c27eed", /* red     */
-  [10] = "#2fdac3", /* green   */
-  [11] = "#93ece0", /* yellow  */
-  [12] = "#c7dcff", /* blue    */
-  [13] = "#aba1f7", /* magenta */
-  [14] = "#c2d9ff", /* cyan    */
-  [15] = "#f6f7f9", /* white   */
+  [8]  = "#65737e", /* black   */
+  [9]  = "#bf616a", /* red     */
+  [10] = "#a3be8c", /* green   */
+  [11] = "#ebcb8b", /* yellow  */
+  [12] = "#8fa1b3", /* blue    */
+  [13] = "#b48ead", /* magenta */
+  [14] = "#96b5b4", /* cyan    */
+  [15] = "#eff1f5", /* white   */
 
   /* special colors */
-  [256] = "#101313", /* background */
-  [257] = "#c3c4c4", /* foreground */
+  [256] = "#2b303b", /* background */
+  [257] = "#c0c5ce", /* foreground */
 
 };
 
@@ -137,7 +133,7 @@ static const char *colorname[] = {
 unsigned int defaultfg = 257;
 unsigned int defaultbg = 256;
 unsigned int defaultcs = 257;
-unsigned int defaultrcs = 256;
+unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor

@@ -67,13 +67,13 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function         format          argument */
-  { datetime,             "%s"";",        "%a %d.%m, %Y" },
+  { datetime,             "%s;",        "%A %d.%m" },
   
-	{ wifi_perc,            "[󰖩 :%s | ",         "wlan0" },
+	{ wifi_perc,            "[󰖩 :%s | ",        "wlan0" },
   { cpu_perc,             " :%s - ",         NULL },
   { ram_perc,             " :%s | ",         NULL },
-  { battery_state,    "%s:",                  "BAT0" },
-  { battery_perc,     "%s]",                  "BAT0" },
-  { datetime,             "[%s]",                 "%T" },
+  { battery_state,        "%s:",              "BAT0" },
+  { battery_perc,         "%s]",              "BAT0" },
+  { datetime,             "[%s]",             "%T" },
 
 };

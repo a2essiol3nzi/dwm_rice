@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { " ", "2", "3", "4" , "5", "6", "7", "8", "" }; // 9_th is "hidden"
+static const char *tags[] = { "󰣇", "2", "3", "4" , "5", "6", "7", "8", "" }; // 9_th is "hidden"
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -79,7 +79,7 @@ static const char *termcmd[]  = { "st", NULL };
 /* 
 	scrot: screenshot
 */
-static const char *screenshot[] = { "scrot", "-s", "-e", "mv $f /home/axel/Immagini/SCReenshOT/%d-%m-%Y_%T-scrot.png", NULL };
+static const char *screenshot[] = { "scrot", "-s", "-e", "mv $f /home/axel/Immagini/SCReenshOT/%d%m%Y_%H-%M-%s-scrot.png", NULL };
 
 /*
   doom emacs: text editor
