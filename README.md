@@ -5,7 +5,6 @@ There are some patch applied, all by suckless team, and i also included some per
 When I tried to rice for the first time was a little hard, I hope to be helpfull and maybe give you some ideas!
 
 ## Notes
-- I use Endeavouros 
 - The "Myconfig" folder is probably more usefull for me :))
 - I struggled for many months to find any good wallpapers, I wanted to share those but GH wont let me commit them cause their too big -_- ... BUT there are some color schemes!!
 
